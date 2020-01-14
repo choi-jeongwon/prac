@@ -1,0 +1,25 @@
+.title {
+	font-family: 'Yeon Sung', cursive;
+}
+
+p {
+	font-family: 'Nanum Pen Script', cursive;
+}
+
+img {
+	width: 500px;
+	height: 300px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.mytitle {
+	align-items: center;
+	justify-content: center;
+	width: 500px;
+}
