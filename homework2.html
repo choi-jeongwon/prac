@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>쇼핑몰</title>
+	<!-- css 연결 -->
+	<link rel = "stylesheet" type = "text/css" href = "homework1.css">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+	<script type="text/javascript">	
+
+
+
+		function init(){
+
+
+
+			$('#name').val("");
+
+			$('#inputGroupSelect04').val("-- 수량을 선택하세요 --");
+
+			$('#addr').val("");
+
+			$('#PN').val("");
+
+
+
+			$('#name').focus();
+
+			return;
+
+
+
+		}
+
+
+
+		function make_table(){
+
+			let name = $('#name').val();
+
+			let cnt = $('#inputGroupSelect04').val();
+
+			let addr = $('#addr').val();
+
+			let PN = $('#PN').val();
+
+
+
+			let temp_html = '<tr><td>' + name + '</td>+<td>' +cnt + '</td>+<td>' + addr + '</td>+<td>' + PN +'</td>+</tr>';
+
+			$('#table_body').append(temp_html);
+
+		}
+
+
+
+		function do_alert(){
+
+
+
+			if($('#name').val() == ""){
+
+				alert('주문자 이름을 입력하세요');
+
+				$('#name').focus();
+
+				return;
+
+			}
+
+
+
+			if($('#inputGroupSelect04').val()=="-- 수량을 선택하세요 --"){
+
+				alert('수량 옵션을 선택해주세요');
+
+				$('#inputGroupSelect04').focus(); 
+
+				return;
+
+			}
+
+
+
+			if($('#addr').val()==""){
+
+				alert('주소를 입력하세요');
+
+				$('#addr').focus();  
+
+				return;
+
+			}
+
+
+
+			let regPhone =  /^010-\d{3,4}-\d{4}$/;
+
+
+
+			if($('#PN').val()==""){
+
+				alert('번호를 입력하세요');
+
+				$('#PN').focus();
+
+				return;
+
+			}
+
+
+
+			if((regPhone.test($('#PN').val())==false)){
+
+				alert('전화번호 형식이 틀렸습니다 010-0000-0000 형태로 입력하세요');
+
+				$('#PN').focus();
+
+				return;
+
+			}
+
+			if((regPhone.test($('#PN').val())==true)){
+
+				alert('주문완료!!');
+
+				make_table();
+
+				init();
+
+				return;
+
+			}
+
+
+
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<div class="mytitle">
+		<div class="img">
+			<img src = "https://t1.daumcdn.net/cfile/tistory/997E2C395B988B3619">
+		</div>
+		<p>
+			<h1 class="title">양초를 팝니다</h1> 가격:3,000원/개
+		</p>
+		<p>이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 빌면 짜자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 아주 좋아요</p>
+		<div class="input-group mb-3">
+
+			<div class="input-group-prepend">
+
+				<span class="input-group-text" id="basic-addon1">주문자 이름</span>
+
+			</div>
+
+			<input type="text" id="name" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+
+		</div>
+
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="inputGroupSelect01">수량</label>
+			</div>
+
+			<select class="custom-select" id="inputGroupSelect04">
+
+				<option selected>-- 수량을 선택하세요 --</option>
+
+				<option value="1">One</option>
+
+				<option value="2">Two</option>
+
+				<option value="3">Three</option>
+
+			</select>
+
+		</div>
+
+
+
+		<div class="input-group mb-3">
+
+			<div class="input-group-prepend">
+
+				<span class="input-group-text" id="basic-addon3">주소</span>
+
+			</div>
+
+			<input type="text" id="addr" class="form-control" placeholder="" aria-label="Useraddr" aria-describedby="basic-addon1">
+
+		</div>
+
+
+
+		<div class="input-group mb-3">
+
+			<div class="input-group-prepend">
+
+				<span class="input-group-text" id="basic-addon4">전화번호</span>
+
+			</div>
+
+			<input type="text" id="PN" class="form-control" placeholder="" aria-label="UserPN" aria-describedby="basic-addon1">
+
+		</div>
+
+
+
+		<div style="text-align:center;">
+
+			<button type="button" class="btn btn-secondary" onclick="do_alert()"> 주문하기 
+
+			</button>	
+
+		</div>
+
+	</div>
+
+
+
+	<div>
+
+		<table id="foo-table" class="table table-bordered">
+
+			<thead>
+
+				<tr><th>이름</th><th>수량</th><th>주소</th><th>전화번호</th></tr>
+
+			</thead>
+
+			<tbody id = "table_body">
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+
+
+</div>
+
+</div>
+
+
+
+</body>
+
+</html>
